@@ -1,0 +1,46 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+Federal Directorate of Public Services
+Islamabad, Pakistan
+
+BIDDING DOCUMENT
+Development of Citizen Grievance Portal and Mobile Application
+Tender Reference No: SEED-01
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+Federal Directorate of Public Services invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 18,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Design and develop a bilingual (English/Urdu) citizen grievance web portal.
+2. Build Android and iOS mobile apps with complaint tracking and SMS notifications.
+3. Host the solution on cloud infrastructure and provide 12 months of support.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 The bidder must be a company registered with the Securities and Exchange Commission of Pakistan (SECP).
+3.3 Minimum average annual turnover of PKR 30 million during the last three financial years.
+3.4 The bidder must have been in business for at least 3 years.
+3.5 The bidder must have completed at least two similar web or mobile application projects, each worth PKR 5 million or more, for public or private clients.
+3.6 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.7 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

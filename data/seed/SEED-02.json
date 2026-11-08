@@ -1,0 +1,65 @@
+{
+  "external_id": "SEED-02",
+  "title": "AI Chatbot for Citizen Helpline Services",
+  "agency": "Islamabad Capital Services Cell",
+  "city": "Islamabad",
+  "published_days_ago": 4,
+  "closing_in_days": 18,
+  "document": "SEED-02.txt",
+  "demo_extraction": {
+    "scope_summary": "Deliver an Urdu and English AI chatbot for the citizen helpline on web and WhatsApp. Integrate the chatbot with the existing complaint database through REST APIs. Provide an administrator dashboard, staff training and six months of support.",
+    "estimated_value_pkr": 12000000,
+    "bid_security": "PKR 240,000",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "The firm must hold valid registration with the Pakistan Software Export Board (PSEB).",
+        "type": "registration",
+        "threshold": "PSEB",
+        "mandatory": true,
+        "source_quote": "The firm must hold valid registration with the Pakistan Software Export Board (PSEB)."
+      },
+      {
+        "requirement": "Minimum annual turnover of PKR 20 million in the last financial year.",
+        "type": "turnover",
+        "threshold": "PKR 20 million",
+        "mandatory": true,
+        "source_quote": "Minimum annual turnover of PKR 20 million in the last financial year."
+      },
+      {
+        "requirement": "The bidder must have at least 4 years of business history.",
+        "type": "experience",
+        "threshold": "4 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have at least 4 years of business history."
+      },
+      {
+        "requirement": "One completed AI chatbot project",
+        "type": "experience",
+        "threshold": "1 AI chatbot project",
+        "mandatory": true,
+        "source_quote": "The bidder must demonstrate at least one completed AI chatbot or conversational assistant project."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

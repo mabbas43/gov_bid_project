@@ -1,0 +1,44 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+Sindh Municipal Services Board
+Karachi, Pakistan
+
+BIDDING DOCUMENT
+Sindh Municipal Services Web Portal
+Tender Reference No: SEED-11
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+Sindh Municipal Services Board invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 15,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Develop a municipal services web portal for water, sanitation and property tax.
+2. Provide on-site support at the Board's offices.
+3. Train municipal staff and maintain the portal for one year.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 Minimum annual turnover of PKR 15 million in the last financial year.
+3.3 The bidder must have a registered head office in Karachi at the time of bid submission. Bids from firms without a Karachi office shall be rejected.
+3.4 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.5 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

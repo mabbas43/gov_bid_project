@@ -1,0 +1,58 @@
+{
+  "external_id": "SEED-04",
+  "title": "Campus Network Upgrade (LAN/WAN and Wi-Fi)",
+  "agency": "Federal College of Technical Education",
+  "city": "Rawalpindi",
+  "published_days_ago": 3,
+  "closing_in_days": 21,
+  "document": "SEED-04.txt",
+  "demo_extraction": {
+    "scope_summary": "Upgrade the campus LAN and WAN, including structured cabling across six blocks. Install managed switches, firewalls and campus-wide Wi-Fi. Provide network monitoring, documentation and a one year warranty.",
+    "estimated_value_pkr": 20000000,
+    "bid_security": "2% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum annual turnover of PKR 25 million during the last financial year.",
+        "type": "turnover",
+        "threshold": "PKR 25 million",
+        "mandatory": true,
+        "source_quote": "Minimum annual turnover of PKR 25 million during the last financial year."
+      },
+      {
+        "requirement": "The bidder must have been in business for at least 3 years.",
+        "type": "experience",
+        "threshold": "3 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have been in business for at least 3 years."
+      },
+      {
+        "requirement": "One network project of PKR 10M+",
+        "type": "experience",
+        "threshold": "1 network project of PKR 10 million",
+        "mandatory": true,
+        "source_quote": "The bidder must have completed at least one network infrastructure project worth PKR 10 million or more."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

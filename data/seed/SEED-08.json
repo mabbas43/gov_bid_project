@@ -1,0 +1,72 @@
+{
+  "external_id": "SEED-08",
+  "title": "Hospital Management Information System",
+  "agency": "KP Health Facilities Authority",
+  "city": "Peshawar",
+  "published_days_ago": 9,
+  "closing_in_days": 16,
+  "document": "SEED-08.txt",
+  "demo_extraction": {
+    "scope_summary": "Develop a Hospital Management Information System for four tertiary hospitals. Cover patient registration, pharmacy, laboratory and billing modules. Provide on-site support at each hospital for twelve months.",
+    "estimated_value_pkr": 48000000,
+    "bid_security": "2% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 50 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 50 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 50 million over the last three years."
+      },
+      {
+        "requirement": "The bidder must have been in business for at least 5 years.",
+        "type": "experience",
+        "threshold": "5 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have been in business for at least 5 years."
+      },
+      {
+        "requirement": "Demonstrated HL7/FHIR integration capability",
+        "type": "technical",
+        "threshold": "HL7 or FHIR",
+        "mandatory": true,
+        "source_quote": "HL7 or FHIR integration capability must be demonstrated in the technical proposal."
+      },
+      {
+        "requirement": "Preferred: tertiary hospital HMIS deployment",
+        "type": "experience",
+        "threshold": "tertiary HMIS deployment",
+        "mandatory": false,
+        "source_quote": "Prior HMIS deployment in a tertiary care hospital is preferred."
+      },
+      {
+        "requirement": "Preferred: registered office in KP",
+        "type": "location",
+        "threshold": "Khyber Pakhtunkhwa office",
+        "mandatory": false,
+        "source_quote": "A registered office in Khyber Pakhtunkhwa is preferred."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

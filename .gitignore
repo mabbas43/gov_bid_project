@@ -1,0 +1,12 @@
+.env
+.env.local
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+data/*.db*
+data/workspace/*
+data/cache/
+!data/workspace/.gitkeep
+node_modules/
+.next/

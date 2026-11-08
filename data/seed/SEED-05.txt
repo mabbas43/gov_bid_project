@@ -1,0 +1,47 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+Provincial Education Foundation
+Lahore, Pakistan
+
+BIDDING DOCUMENT
+Enterprise Resource Planning (ERP) System for Education Foundation
+Tender Reference No: SEED-05
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+Provincial Education Foundation invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 95,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Implement finance, HR, payroll and procurement ERP modules.
+2. Migrate legacy accounting data and integrate with the provincial treasury system.
+3. Provide on-site implementation across nine regional offices.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 Minimum average annual turnover of PKR 40 million over the last three years.
+3.3 The bidder must have been in business for at least 5 years.
+3.4 Prior ERP implementation experience at two public sector organizations is preferred and carries additional marks.
+3.5 SAP or Oracle partner certification is desirable.
+3.6 The bidder should deploy a team of at least 25 full-time technical staff on this assignment.
+3.7 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.8 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

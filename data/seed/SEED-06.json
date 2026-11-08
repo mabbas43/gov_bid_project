@@ -1,0 +1,65 @@
+{
+  "external_id": "SEED-06",
+  "title": "Security Operations Centre and Data Centre Hardening",
+  "agency": "Directorate of Government Information Security",
+  "city": "Islamabad",
+  "published_days_ago": 8,
+  "closing_in_days": 20,
+  "document": "SEED-06.txt",
+  "demo_extraction": {
+    "scope_summary": "Establish a 24x7 Security Operations Centre with SIEM and SOAR tooling. Harden data centre servers and storage, and conduct penetration testing. Supply network security appliances with three year OEM support.",
+    "estimated_value_pkr": 60000000,
+    "bid_security": "2.5% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 45 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 45 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 45 million over the last three years."
+      },
+      {
+        "requirement": "Valid ISO 27001 certification",
+        "type": "technical",
+        "threshold": "ISO 27001",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid ISO 27001 certificate."
+      },
+      {
+        "requirement": "Two CISSP or CISM certified staff",
+        "type": "technical",
+        "threshold": "2 CISSP/CISM staff",
+        "mandatory": true,
+        "source_quote": "At least two staff members must hold CISSP or CISM certifications."
+      },
+      {
+        "requirement": "OEM authorization letter for SIEM",
+        "type": "technical",
+        "threshold": "SIEM OEM letter",
+        "mandatory": true,
+        "source_quote": "Authorized OEM partner letter for the proposed SIEM is required."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

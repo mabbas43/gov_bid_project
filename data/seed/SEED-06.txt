@@ -1,0 +1,46 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+Directorate of Government Information Security
+Islamabad, Pakistan
+
+BIDDING DOCUMENT
+Security Operations Centre and Data Centre Hardening
+Tender Reference No: SEED-06
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+Directorate of Government Information Security invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 60,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Establish a 24x7 Security Operations Centre with SIEM and SOAR tooling.
+2. Harden data centre servers and storage, and conduct penetration testing.
+3. Supply network security appliances with three year OEM support.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 Minimum average annual turnover of PKR 45 million over the last three years.
+3.3 The bidder must hold a valid ISO 27001 certificate.
+3.4 At least two staff members must hold CISSP or CISM certifications.
+3.5 Authorized OEM partner letter for the proposed SIEM is required.
+3.6 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.7 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2.5% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

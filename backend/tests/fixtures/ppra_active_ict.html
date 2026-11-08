@@ -1,0 +1,4133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Active Tenders - PPRA</title>
+ <link rel="icon" type="image/png" href="/public/assets/images/favicon.png">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="/public/assets/css/bootstrap.min.css">
+ <link rel="stylesheet" href="/assets/fonts/remixicon/remixicon.css" />
+ <!-- Vendors CSS -->
+ <link rel="stylesheet" href="/assets/libs/select2/select2.css" />
+ <link rel="stylesheet" href="/public/assets/css/style.css">
+ <link rel="stylesheet" href="/assets/css/cb-responsive-table.css" />
+</head>
+<body class="light-style light-style-bg">
+ <div class="box-layout">
+ <!-- start header -->
+ <header class="position-sticky top-0 bg-white z-3">
+ <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+ <div class="container container-wide">
+ <a class="navbar-brand d-flex align-items-center gap-2" href="https://ppra.gov.pk/">
+ <img src="/public/assets/images/ppra-logo.png" alt="PPRA Logo"
+ style="width: 80px;height: auto !important;max-height: 80px;">
+ </a>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNav">
+ <ul class="navbar-nav ms-auto">
+ <li class="nav-item"><a class="nav-link" href="https://ppra.gov.pk/">Home</a></li>
+ <li class="nav-item dropdown">
+ <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ Tenders 
+ </a>
+ <ul class="dropdown-menu">
+ <li class="nav-item"><a class="nav-link" href="/public/tenders/active-tenders">Active Tenders</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/tenders/tenders-history">Tenders History</a></li>
+ </ul>
+ </li>
+ <!-- <li class="nav-item"><a class="nav-link" href="/public/tenders/active-tenders">Active Tenders</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/tenders/tenders-history">Tenders History</a></li> -->
+ <li class="nav-item"><a class="nav-link" href="/public/evaluations">Evaluation Results</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/contracts">Contracts</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/grievances">Grievances</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/jobs/job-advertisements">job Advertisements</a></li>
+ <li class="nav-item dropdown">
+ <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ Blacklisted Firms
+ </a>
+ <ul class="dropdown-menu">
+ <li class="nav-item"><a class="nav-link" href="/public/active-blacklisted-firms">Active Black Listed Firms</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/active-de-listed-black-listed-firms">De-Listed Black Listed Firms</a></li>
+ </ul>
+ </li>
+ <!-- <li class="nav-item"><a class="nav-link" href="/public/active-blacklisted-firms">Active Black Listed Firms</a></li>
+ <li class="nav-item"><a class="nav-link" href="/public/active-de-listed-black-listed-firms">De-Listed Black Listed Firms</a></li> -->
+ </ul>
+ </div>
+ </div>
+ </nav>
+ </header>
+ <!-- end header --> <!-- Page Title -->
+ <div class="container container-wide py-3">
+ <div class="hero">
+ <h1>Active Tenders</h1>
+ <p>This list displays currently open tenders and tenders that have closed within the last 10 days.</p>
+ </div>
+ </div>
+ <!-- Main Content -->
+ <main class="main pt-70px pb-70px">
+ <section class="p-0">
+ <div class="container container-wide">
+ <!-- Active Filters Display -->
+ <div class="row mb-3">
+ <div class="col-12">
+ <div class="alert alert-info">
+ <strong>Active Filters:</strong>
+ <span class="filter-badge">
+ Sector: <strong>Info and Comm Tech</strong>
+ <span class="remove" onclick="removeFilter('sector')">×</span>
+ </span>
+ <a href="/public/tenders/active-tenders" class="btn btn-sm btn-outline-secondary ms-3">Clear All</a>
+ </div>
+ </div>
+ </div>
+ <!-- Filter Card -->
+ <div class="filter-card ">
+ <!-- <div class="filter-header">
+ <h2 class="filter-title"><i class="fas fa-sliders-h me-2"></i>Filters</h2>
+ <button class="btn btn-link btn-sm text-decoration-none p-0" type="button" data-bs-toggle="collapse"
+ data-bs-target="#filterCollapse">
+ <i class="fas fa-chevron-down text-primary"></i>
+ </button>
+ </div> -->
+ <button class="btn btn-link text-decoration-none filter-header w-100 p-3" type="button" data-bs-toggle="collapse"
+ data-bs-target="#filterCollapse">
+ <h2 class="filter-title"><i class="fas fa-sliders-h me-2"></i>Filters</h2>
+ <i class="fas fa-chevron-down text-primary"></i>
+ </button>
+ <div class="collapse show" id="filterCollapse">
+ <div class="p-3">
+ <form method="GET" action="" id="filterForm">
+ <div class="row g-3">
+ <!-- Keyword Search -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Keyword Search</label>
+ <input type="text" name="keyword" class="form-control form-control-sm bg-body-secondary"
+ placeholder="Search by title, description, or tender no"
+ value="">
+ </div>
+ <!-- Tender Number -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Tender Number</label>
+ <input type="text" name="tender_no" class="form-control form-control-sm bg-body-secondary"
+ placeholder="e.g., TND00000000001E"
+ value="">
+ </div>
+ <!-- Closing Date -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Closing Date</label>
+ <input type="date" name="closing_date" class="form-control form-control-sm bg-body-secondary"
+ value="">
+ </div>
+ <!-- Tender Type -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Tender Type</label>
+ </div>
+ <!-- By Method -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Tender Type</label>
+ </div>
+ <!-- Procurement Category -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Category</label>
+ </div>
+ <!-- Sector -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Sector</label>
+ </div>
+ <!-- Tender Nature -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Nature</label>
+ </div>
+ <!-- Organization -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Organization</label>
+ </div>
+ <!-- Country -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Country</label>
+ </div>
+ <!-- Advertise Date From -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Advertise Date From</label>
+ <input type="date" name="advertise_date_from" class="form-control form-control-sm bg-body-secondary"
+ value="">
+ </div>
+ <!-- Advertise Date To -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Advertise Date To</label>
+ <input type="date" name="advertise_date_to" class="form-control form-control-sm bg-body-secondary"
+ value="">
+ </div>
+ <!-- Status -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">Status</label>
+ </div>
+ <!-- City -->
+ <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+ <label class="form-label">City</label>
+ <input type="text" name="city" class="form-control form-control-sm bg-body-secondary"
+ placeholder="e.g., Lahore"
+ value="">
+ </div>
+ <!-- Filter Buttons -->
+ <div class="col-12">
+ <div class="d-flex gap-2 justify-content-end">
+ <a href="/public/tenders/active-tenders" class="btn btn-outline-secondary btn-sm">
+ <i class="fas fa-redo me-1"></i>Reset
+ </a>
+ <button type="submit" class="btn btn-primary btn-sm">
+ <i class="fas fa-search me-1"></i>Apply Filters
+ </button>
+ </div>
+ </div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ <!-- Results Summary -->
+ <div class="row mb-3">
+ <div class="col-12">
+ <div class="d-flex justify-content-between align-items-center">
+ <p class="mb-0 fs-15 fw-500">
+ Showing 42 of 42 tenders
+ </p>
+ <p class="mb-0 fs-14 text-muted">
+ Page 1 of 1 </p>
+ </div>
+ </div>
+ </div>
+ <!-- Tenders Table -->
+ <div class="table-card tender-card">
+ <div class="table-header">
+ <h2 class="filter-title mb-0">Tender Listings</h2>
+ </div>
+ <div class="card-body p-0">
+ <div class="cb-rt-wrap p-3">
+ <table class="cb-rt">
+ <thead>
+ <tr>
+ <th style="width:42px;"></th>
+ <th style="width:50px;">Sr</th>
+ <th>Tender No</th>
+ <th>Tender Details</th>
+ <th class="text-center">Status</th>
+ <th>Advertised</th>
+ <th>Closing</th>
+ <th class="text-center">Actions</th>
+ </tr>
+ </thead>
+ <tbody>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="1" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">1</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017609E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Provision, Installation, and Commissioning of Internet Connectivity Services at PSW Offices, Bahria Complex-I and Bahria Complex-III, Karachi</strong>
+ <small class="text-muted d-block">Provision, Installation, and Commissioning of Internet Connectivity Services at PSW Offices, Bahria Complex-I and Bahria Complex-III, Karachi</small>
+ <small class="text-muted d-block">E-Tender Notice for Provision, Installation, and...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">PSW/PROC/26-27/TM-652/656 (P146697)</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Nov 06, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 18, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017609E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017609E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-1">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Commerce</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Single Window (PSW) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 6, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="2" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">2</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017641E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>4851-Router for Data Center,</strong>
+ <small class="text-muted d-block">CUI-Lahore Campus</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">CUI-LHR-TN-26-1957</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Nov 06, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 16, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017641E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017641E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-2">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> COMSATS University Islamabad</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> COMSATS University Islamabad (CUI) - Lahore Campus </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> lahore - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 6, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="3" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">3</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017551E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Procurement of MiFi Devices with One-Year Internet Connectivity under Prime Minister's Youth Chromebook Scheme</strong>
+ <small class="text-muted d-block">Procurement of 4G MiFi Devices with SIMs and 30 GB Monthly Internet Package for One Year</small>
+ <small class="text-muted d-block">Procurement of 4G MiFi devices along with SIMs...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P183735</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Nov 05, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 16, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017551E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017551E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-3">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Inter Boards Coordination Commission (IBCC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> IBCC </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 5, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="4" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">4</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000014480E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Provision of Media connectivity through Satellite, Microwave and Optical Fiber for Wi-Fi Connectivity at Punjab Cattle Market Sites on Turnkey Basis</strong>
+ <small class="text-muted d-block">Provision of Media connectivity through...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P125500</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Nov 05, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 16, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000014480E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000014480E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-4">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) HQs </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 5, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="5" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">5</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017292E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>P-84/2026 PROCUREMENT OF MANAGED CYBER SECURITY OPERATIONS CENTER (CSOC/SOC) SERVICES</strong>
+ <small class="text-muted d-block">PROCUREMENT OF MANAGED CYBER SECURITY OPERATIONS CENTER (CSOC/SOC) SERVICES</small>
+ <small class="text-muted d-block">PROCUREMENT OF MANAGED CYBER SECURITY OPERATIONS...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-84/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Nov 03, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 13, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017292E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017292E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-5">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 3, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="6" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">6</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000013389E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-49/2026 Renewal of SLA Support Services Contract for IT Hardware Equipment at FBR Data Centers (Islamabad & Karachi)</strong>
+ <small class="text-muted d-block">Tender No. P-49/2026 Renewal of SLA Support Services Contract for IT Hardware Equipment at FBR Data Centers (Islamabad & Karachi)</small>
+ <small class="text-muted d-block">Tender No. P-49/2026 Renewal of SLA Support...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-49/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Nov 03, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 12, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000013389E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000013389E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-6">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 3, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="7" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">7</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017288E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>TENDER NO. P-83/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</strong>
+ <small class="text-muted d-block">TENDER NO. P-83/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</small>
+ <small class="text-muted d-block">TENDER NO. P-83/2026 PROCUREMENT AND...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-83/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Nov 02, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 13, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017288E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017288E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-7">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 2, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="8" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">8</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017206E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>PROCUREMENT OF HIGH-PERFORMANCE LAPTOPS FOR IT CELL DEVELOPERS</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P174702</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 31, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 11, 2026</strong>
+ <small class="text-muted">10:30 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017206E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017206E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-8">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Federal Education and Professional Training</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Federal Board of Intermediate and Secondary Education (FBISE) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 31, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="9" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">9</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017177E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Provision of Radio Links (ISM Band) Throughout Pakistan on Managed Service for NTC for a Period of Three (03) Years</strong>
+ <small class="text-muted d-block">Provision of Radio Links (ISM Band) Throughout...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P174762</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 30, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 12, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017177E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017177E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-9">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) HQs </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 30, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="10" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">10</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">FW0000017182E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-warning">Framework Agreement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Outsourcing of Human Resource for Provision of Various Administrative Services to NTC for a Period of One (01) Year</strong>
+ <small class="text-muted d-block">Outsourcing of Human Resource for Provision of...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">FFW10719</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 30, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 11, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/FW0000017182E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/FW0000017182E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-10">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) HQs </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Pre-qualification Notice (PQ)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 30, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="11" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">11</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017137E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Upgradation of Avaya Servers and Media Gateways and Migration of Existing Licenses</strong>
+ <small class="text-muted d-block">IT-20152-YP-Upgradation of Avaya Servers and...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">IT-20152-YP</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 30, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 10, 2026</strong>
+ <small class="text-muted">02:15 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017137E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017137E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-11">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Pakistan State Oil (PSO)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> PSO </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 30, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="12" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">12</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017142E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Supply of additional in-use core based license under enterprise agreement for Microsoft SQL standard database edition for DLP</strong>
+ <small class="text-muted d-block">Supply of additional in-use core based license...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">GSD (PROC-I) / 465737 / MS SQL / 2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 30, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 10, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017142E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017142E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-12">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> State Bank of Pakistan (SBP)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> SBP Banking Services Corporation GSD HoK </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 30, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="13" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">13</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017145E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>PROCUREMENT OF IT HARDWARE, MACHINERY AND EQUIPMENT</strong>
+ <small class="text-muted d-block">Single Stage-Two Envelope will be used by...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">FPSC/Project/Proc/001/26</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 30, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 09, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017145E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017145E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-13">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Federal Public Service Commission</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> FPSC </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 30, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="14" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">14</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016982E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Supply of 03 x Rack Server (Refurbished) at C-5, Marston Road Exchange NTC Karachi</strong>
+ <small class="text-muted d-block">Supply of 03 x Rack Server (Refurbished) at C-5,...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P174729</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 28, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 12, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016982E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016982E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-14">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of IT and TeleCommunication</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Regional HQ&amp;#39;s National Telecommunication Corporation </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 28, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="15" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">15</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016994E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Qlik Sense HA/DR Implementation and Administration Services</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">IT-20142-SJ</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 28, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 07, 2026</strong>
+ <small class="text-muted">02:15 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016994E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016994E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-15">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Pakistan State Oil (PSO)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> PSO </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 28, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="16" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">16</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016916E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Hanging/Fixing of 06 Fiber OFC From Golra More to 26 No. Chungi Due to Construction of N-5 From Rawalpindi to Hassanabdal</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P173550</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 27, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 17, 2026</strong>
+ <small class="text-muted">10:30 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016916E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016916E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-16">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of IT and TeleCommunication</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> NTC </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 27, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="17" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">17</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016812E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>RFP-NOR-IT-39-2026 Procurement of Consultancy Services for Vulnerability Assessment and Penetration Testing (VAPT) for Network Infrastructure and Web Applications of<br>National Grid Company</strong>
+ <small class="text-muted d-block">RFP-NOR-IT-39-2026 Procurement of Consultancy...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">RFP-NOR-IT-39-2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 26, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 13, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016812E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016812E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-17">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Energy (Power Division)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Grid Company of Pakistan (NGC) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Lahore - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 26, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="18" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">18</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016844E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Shifting / Re-Routing of NTC OFC Due to Construction of Underpass at COD Chowk on Range Road Rawalpindi</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P171981</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 26, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 11, 2026</strong>
+ <small class="text-muted">10:30 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016844E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016844E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-18">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of IT and TeleCommunication</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> NTC </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 26, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="19" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">19</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016751E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Establishment of Wifi Network over Fiber Optic at Sindh Secretariat, Karachi</strong>
+ <small class="text-muted d-block">Establishment of Wifi Network over Fiber Optic at...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P170007</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 23, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 06, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016751E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016751E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-19">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of IT and TeleCommunication</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 23, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="20" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">20</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016283E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-79/2026 Procurement and Implementation of Enterprise Resource Planning (ERP) System</strong>
+ <small class="text-muted d-block">Procurement and Implementation of Enterprise Resource Planning (ERP) System</small>
+ <small class="text-muted d-block">Procurement and Implementation of Enterprise...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-79/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 23, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 06, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016283E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016283E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-20">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 23, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="21" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">21</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000013122E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender P-55/2026 Procurement of Hardware, Software Supply & Infrastructure Implementation</strong>
+ <small class="text-muted d-block">Tender P-55/2026 Procurement of Hardware, Software Supply & Infrastructure Implementation</small>
+ <small class="text-muted d-block">Tender P-55/2026 Procurement of Hardware,...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-55/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 23, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">04:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000013122E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000013122E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-21">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 23, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="22" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">22</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015897E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>TENDER NO. P-78/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</strong>
+ <small class="text-muted d-block">TENDER NO. P-78/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</small>
+ <small class="text-muted d-block">TENDER NO. P-78/2026 PROCUREMENT AND...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-78/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 23, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 27, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015897E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015897E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-22">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 23, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="23" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">23</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016619E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Procurement Process for Renewal of Fortinet Unified Threat Protection (UTP) Subscription and Forti Care Premium Support for Existing FortiGate 600E Firewalls</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P125386</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 10, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016619E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016619E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-23">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Poverty Alleviation and Social Safety</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Benazir Income Support Programme (BISP) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="24" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">24</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016649E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Maintenance and Support Services for Disaster Recovery Data Center Hyderabad (Excluding UPS System)</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">GSD (PROC-I) / 462736/ SLA DR Site / 2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 06, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016649E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016649E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-24">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> State Bank of Pakistan (SBP)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> SBP Banking Services Corporation GSD HoK </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="25" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">25</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">FW0000016590E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-warning">Framework Agreement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Pre-qualificaton of Firms for IT Infrastuctures support and services</strong>
+ <small class="text-muted d-block">pre-qualification</small>
+ <small class="text-muted d-block">Pre-qualificaton of Firms for IT Infrastructures...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">FFW10287</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 05, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/FW0000016590E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/FW0000016590E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-25">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Oil and Gas Regulatory Authority (OGRA)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Oil and Gas Regulatory Authority (OGRA) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Pre-qualification Notice (PQ)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="26" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">26</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015887E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>TENDER NO. P-77/2026 PROCUREMENT AND IMPLEMENTATION OF PATCH MANAGEMENT SOLUTION</strong>
+ <small class="text-muted d-block">TENDER NO. P-77/2026 PROCUREMENT AND IMPLEMENTATION OF PATCH MANAGEMENT SOLUTION</small>
+ <small class="text-muted d-block">TENDER NO. P-77/2026 PROCUREMENT AND...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-77/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015887E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015887E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-26">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="27" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">27</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015563E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-72/2026 Procurement of Enterprise-Grade Layer 2 (L2) Network Switches for SAARC Office – Including Mandatory Site Survey, Installation, Configuration,<br>Testing and Commissioning</strong>
+ <small class="text-muted d-block">Tender No. P-72/2026 Procurement of Enterprise-Grade Layer 2 (L2) Network Switches for SAARC Office – Including Mandatory Site Survey, Installation, Configuration, Testing and Commissioning</small>
+ <small class="text-muted d-block">Tender No. P-72/2026 Procurement of...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-72/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 28, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015563E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015563E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-27">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="28" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">28</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015566E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-73/2026 Procurement of RACK MOUNT SERVERS (Along with all allied accessories and installation)</strong>
+ <small class="text-muted d-block">Tender No. P-73/2026 Procurement of RACK MOUNT SERVERS (Along with all allied accessories and installation)</small>
+ <small class="text-muted d-block">Tender No. P-73/2026 Procurement of RACK MOUNT...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-73/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 22, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 27, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015566E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015566E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-28">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 22, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="29" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">29</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016568E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-81/2026 Annual Maintenance Contract (AMC), Repair & Maintenance Services of Kitchen Appliances, Cleaning Appliances, Furniture & Fixtures, and Office<br>Equipment</strong>
+ <small class="text-muted d-block">Tender No. P-81/2026 Annual Maintenance Contract (AMC), Repair & Maintenance Services of Kitchen Appliances, Cleaning Appliances, Furniture & Fixtures, and Office Equipment</small>
+ <small class="text-muted d-block">Tender No. P-81/2026 Annual Maintenance Contract...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-81/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 21, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 03, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016568E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016568E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-29">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 21, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="30" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">30</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015561E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tender No. P-71/2026 Procurement of Enterprise-Grade Wireless LAN Controller & Wi-Fi 7 Access Points for PRAL SAARC Office, Including Mandatory Site Survey, Heatmap<br>Validation, Installation, Configuration, Testing and Commissioning</strong>
+ <small class="text-muted d-block">Tender No. P-71/2026 Procurement of Enterprise-Grade Wireless LAN Controller & Wi-Fi 7 Access Points for PRAL SAARC Office, Including Mandatory Site Survey, Heatmap Validation, Installation, Configuration, Testing and Commissioning</small>
+ <small class="text-muted d-block">Tender No. P-71/2026 Procurement of...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-71/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 21, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015561E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015561E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-30">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 21, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="31" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">31</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016402E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Procurement of IT Equipment for PO Punjab Lahore</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P150645</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 21, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016402E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016402E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-31">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Commission for Human Development (NCHD)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> NCHD </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 21, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="32" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">32</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016452E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Annual Maintenance of DELL Storage</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">IT-A4955-SJ</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 20, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">02:15 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016452E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016452E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-32">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Pakistan State Oil (PSO)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> PSO </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 20, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="33" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">33</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016456E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Secondary Internet Services at PSO House (300 Mbps CIR)</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">IT-A4956-SJ</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 20, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">02:15 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016456E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016456E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-33">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Pakistan State Oil (PSO)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> PSO </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 20, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="34" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">34</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016385E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Procurement of Data Center Infrastructure as a Service (IaaS) for NTC</strong>
+ <small class="text-muted d-block">Procurement of Data Center Infrastructure as a...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P160428</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 19, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 13, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016385E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016385E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-34">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) HQs </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 19, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="35" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">35</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016384E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Tier III Design (TCDD) & Constructed Facility (TCCF) Certifications of NTC Primary Data Center Islamabad and Disaster Recovery Data Center Lahore</strong>
+ <small class="text-muted d-block">Tier III Design (TCDD) & Constructed Facility...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P160047</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 19, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016384E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016384E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-35">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) HQs </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 19, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="36" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">36</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016340E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Services of Wide Area Network (WAN) Connectivity on Layer 3 MPLS (for Backup)</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">GSD (PROC-I) / 461181 / BackUp Links / 2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 18, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 03, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016340E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016340E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-36">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> State Bank of Pakistan (SBP)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> SBP Banking Services Corporation GSD HoK </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 18, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="37" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">37</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015370E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>CORRIGENDUM INVITATION TO BID FOR PROCUREMENT OF UAV BASED NAVIGATIONAL AIDS INSPECTION SYSTEM (WITH TRAINING, TESTING AND COMMISSIONING) I/T NO. HQPAA/1992/375/XXLN</strong>
+ <small class="text-muted d-block">CORRIGENDUM INVITATION TO BID FOR PROCUREMENT OF UAV BASED NAVIGATIONAL AIDS INSPECTION SYSTEM (WITH TRAINING, TESTING AND COMMISSIONING) I/T NO. HQPAA/1992/375/XXLN</small>
+ <small class="text-muted d-block">CORRIGENDUM INVITATION TO BID FOR PROCUREMENT OF...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">12545D</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ <span class="tender-badge badge-corrigendum badge badge-secondary bg-secondary mt-1">Corrigendum</span>
+ </td>
+ <td data-label="Advertised">Oct 16, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 02, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015370E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015370E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-37">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Pakistan Airports Authority (PAA)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Airports Authority (PAA) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Karachi - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 16, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="38" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">38</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016025E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>Purchase of Desktop Computers for SNS NUST Faculty FY-2026-27/179410</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P156705</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 13, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 02, 2026</strong>
+ <small class="text-muted">11:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016025E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016025E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-38">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Higher Education Commission (HEC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> School of Natural Sciences (SNS) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 13, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="39" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">39</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000016060E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>SHORT MESSAGE SERVICES (SMS) (ICT)</strong>
+ <small class="text-muted d-block">given in description</small>
+ <small class="text-muted d-block">The Virtual University of Pakistan (VU) intends...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">VU/26-27/09/900</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 13, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 28, 2026</strong>
+ <small class="text-muted">02:30 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000016060E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000016060E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-39">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Higher Education Commission (HEC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Virtual University of Pakistan </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Lahore - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 13, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="40" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">40</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015885E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>PROVISIONING OF DESKTOP COMPUTER WORKSTATION (QTY.01) AT AIR UNIVERSITY KARACHI CAMPUS</strong>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">Tender No. IBD-AU-IT-NRPU-20-26</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 12, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 30, 2026</strong>
+ <small class="text-muted">10:00 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015885E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015885E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-40">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Higher Education Commission (HEC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Air University Islamabad </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 12, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="41" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">41</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000015599E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>INVITATION TO e-BIDS</strong>
+ <small class="text-muted d-block">SUPPLY OF BATTERY BANKS FOR NTC MSAG SITES</small>
+ <small class="text-muted d-block">SUPPLY OF BATTERY BANKS FOR NTC MSAG SITES OF...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">Dir-NTC/25-38/T.E./2026-27 (VII)</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-success">Published</span>
+ </td>
+ <td data-label="Advertised">Oct 08, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Oct 29, 2026</strong>
+ <small class="text-muted">10:30 AM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000015599E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000015599E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-41">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> National Telecommunication Corporation (NTC)</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> National Telecommunication Corporation (NTC) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Tender Notice</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Goods</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Oct 8, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ <!-- main row -->
+ <tr class="cb-rt-main">
+ <td class="cb-rt-arrow-cell">
+ <button type="button" class="cb-rt-expand" data-id="42" title="More details">
+ <i class="ri-arrow-down-s-line"></i>
+ </button>
+ </td>
+ <td data-label="Sr" class="cb-rt-sr text-center">42</td>
+ <td class="cb-rt-name-cell" data-label="Tender No">
+ <div class="cb-rt-user" style="cursor:default;">
+ <span class="cb-rt-avatar bg-primary">
+ <i class="ri-file-list-3-line"></i>
+ </span>
+ <span>
+ <strong class="cb-rt-name text-primary fs-13">TS0000017287E</strong>
+ <span class="cb-rt-dv d-block">
+ <span class="badge bg-primary">Procurement</span> </span>
+ </span>
+ </div>
+ </td>
+ <td class="cb-rt-name-cell" data-label="Tender Details">
+ <span>
+ <strong>TENDER NO. P-83/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</strong>
+ <small class="text-muted d-block">TENDER NO. P-83/2026 PROCUREMENT AND IMPLEMENTATION OF SERVER SECURITY INCLUDING EMAIL AND WEB SECURITY - HYBRID PROXY SOLUTION</small>
+ <small class="text-muted d-block">TENDER NO. P-83/2026 PROCUREMENT AND...</small>
+ <div class="d-flex gap-2 flex-wrap mt-2">
+ <small class="badge bg-light text-dark">Info and Comm Tech</small>
+ <small class="text-muted badge bg-light text-dark">P-83/2026</small>
+ </div>
+ </span>
+ </td>
+ <td data-label="Status" class="text-center text-nowrap">
+ <span class="tender-badge badge-published badge badge-danger">Cancelled</span>
+ <div class="mt-1">
+ <small class="text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="NA">
+ <i class="fa-solid fa-circle-info me-1"></i>NA </small>
+ </div>
+ </td>
+ <td data-label="Advertised">Nov 02, 2026</td>
+ <td data-label="Closing">
+ <strong class="d-block">Nov 13, 2026</strong>
+ <small class="text-muted">03:00 PM</small>
+ </td>
+ <td data-label="Actions" class="text-center text-nowrap">
+ <a href="/public/tenders/tender-details/TS0000017287E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-eye-line"></i>
+ </a>
+ <a href="/public/tenders/invoice/TS0000017287E" class="btn-sm btn btn-primary mb-1">
+ <i class="ri-bill-line"></i>
+ </a>
+ </td>
+ </tr>
+ <!-- detail row -->
+ <tr class="cb-rt-detail" id="cb-rt-detail-42">
+ <td colspan="8">
+ <div class="cb-rt-detail-card">
+ <div class="cb-rt-grid">
+ <div>
+ <span class="cb-rt-dl">Organization</span>
+ <span class="cb-rt-dv">
+ <strong><i class="ri-organization-chart"></i> Ministry of Finance</strong><br>
+ <span class="d-block text-dark mt-1">
+ <i class="ri-building-4-line"></i> Pakistan Revenue Automation (Pvt) Limited (PRAL) </span>
+ <small class="text-muted d-block mt-1">
+ <i class="ri-map-pin-line"></i> Islamabad - Pakistan </small>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Type</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Request for Proposal (RFP)</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Procurement Category</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Non-consultancy Services</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Sector</span>
+ <span class="cb-rt-dv">
+ <span class="bg-light text-dark">Info and Comm Tech</span>
+ </span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Tender Nature</span>
+ <span class="cb-rt-dv">Local</span>
+ </div>
+ <div>
+ <span class="cb-rt-dl">Advertised</span>
+ <span class="cb-rt-dv">Nov 2, 2026</span>
+ </div>
+ </div>
+ </div>
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+ <!-- Pagination -->
+ </div>
+ </section>
+ </main>
+ <!-- Footer -->
+ <footer class="text-center">
+ <div class="container">
+ <p class="mb-0">Copyright © 2026 Public Procurement Regulatory Authority. All rights reserved.</p>
+ </div>
+</footer>
+<div class="scroll-progress d-none d-xxl-block">
+ <a href="#" class="scroll-top" aria-label="scroll">
+ <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+ </a>
+</div> </div>
+ <!-- Scripts -->
+</body>
+</html>

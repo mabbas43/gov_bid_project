@@ -1,0 +1,51 @@
+{
+  "external_id": "SEED-09",
+  "title": "Nationwide Fibre Optic Backbone for Government Network",
+  "agency": "National Government Connectivity Company",
+  "city": "Islamabad",
+  "published_days_ago": 10,
+  "closing_in_days": 35,
+  "document": "SEED-09.txt",
+  "demo_extraction": {
+    "scope_summary": "Lay 3,000 km of fibre optic backbone connecting federal and provincial offices. Supply and commission DWDM and core routing equipment. Operate and maintain the network for five years.",
+    "estimated_value_pkr": 2400000000,
+    "bid_security": "5% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 500 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 500 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 500 million over the last three years."
+      },
+      {
+        "requirement": "The bidder must have been in business for at least 10 years.",
+        "type": "experience",
+        "threshold": "10 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have been in business for at least 10 years."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

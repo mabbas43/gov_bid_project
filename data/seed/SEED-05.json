@@ -1,0 +1,72 @@
+{
+  "external_id": "SEED-05",
+  "title": "Enterprise Resource Planning (ERP) System for Education Foundation",
+  "agency": "Provincial Education Foundation",
+  "city": "Lahore",
+  "published_days_ago": 5,
+  "closing_in_days": 27,
+  "document": "SEED-05.txt",
+  "demo_extraction": {
+    "scope_summary": "Implement finance, HR, payroll and procurement ERP modules. Migrate legacy accounting data and integrate with the provincial treasury system. Provide on-site implementation across nine regional offices.",
+    "estimated_value_pkr": 95000000,
+    "bid_security": "2% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 40 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 40 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 40 million over the last three years."
+      },
+      {
+        "requirement": "The bidder must have been in business for at least 5 years.",
+        "type": "experience",
+        "threshold": "5 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have been in business for at least 5 years."
+      },
+      {
+        "requirement": "Preferred: two public sector ERP implementations",
+        "type": "experience",
+        "threshold": "2 ERP implementations",
+        "mandatory": false,
+        "source_quote": "Prior ERP implementation experience at two public sector organizations is preferred and carries additional marks."
+      },
+      {
+        "requirement": "Desirable: SAP or Oracle partner certification",
+        "type": "technical",
+        "threshold": "SAP or Oracle partner",
+        "mandatory": false,
+        "source_quote": "SAP or Oracle partner certification is desirable."
+      },
+      {
+        "requirement": "Preferred: 25 full-time technical staff",
+        "type": "technical",
+        "threshold": "25 staff",
+        "mandatory": false,
+        "source_quote": "The bidder should deploy a team of at least 25 full-time technical staff on this assignment."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

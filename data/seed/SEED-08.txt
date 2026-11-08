@@ -1,0 +1,47 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+KP Health Facilities Authority
+Peshawar, Pakistan
+
+BIDDING DOCUMENT
+Hospital Management Information System
+Tender Reference No: SEED-08
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+KP Health Facilities Authority invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 48,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Develop a Hospital Management Information System for four tertiary hospitals.
+2. Cover patient registration, pharmacy, laboratory and billing modules.
+3. Provide on-site support at each hospital for twelve months.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 Minimum average annual turnover of PKR 50 million over the last three years.
+3.3 The bidder must have been in business for at least 5 years.
+3.4 HL7 or FHIR integration capability must be demonstrated in the technical proposal.
+3.5 Prior HMIS deployment in a tertiary care hospital is preferred.
+3.6 A registered office in Khyber Pakhtunkhwa is preferred.
+3.7 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.8 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

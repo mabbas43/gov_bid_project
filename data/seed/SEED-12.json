@@ -1,0 +1,58 @@
+{
+  "external_id": "SEED-12",
+  "title": "Core Banking System Replacement",
+  "agency": "Public Sector Development Bank",
+  "city": "Karachi",
+  "published_days_ago": 11,
+  "closing_in_days": 40,
+  "document": "SEED-12.txt",
+  "demo_extraction": {
+    "scope_summary": "Replace the core banking platform across 150 branches. Migrate customer accounts and integrate with national payment switches. Provide 24x7 production support for three years.",
+    "estimated_value_pkr": 1200000000,
+    "bid_security": "5% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "The bidder must have a minimum of 15 years in business.",
+        "type": "experience",
+        "threshold": "15 years",
+        "mandatory": true,
+        "source_quote": "The bidder must have a minimum of 15 years in business."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 750 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 750 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 750 million over the last three years."
+      },
+      {
+        "requirement": "Core banking at three commercial banks",
+        "type": "experience",
+        "threshold": "3 core banking implementations",
+        "mandatory": true,
+        "source_quote": "The bidder must have implemented core banking at no fewer than three commercial banks."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "external_id": "SEED-03",
+  "title": "Migration of Statistical Data Systems to Cloud Infrastructure",
+  "agency": "National Bureau of Survey Data",
+  "city": "Islamabad",
+  "published_days_ago": 7,
+  "closing_in_days": 30,
+  "document": "SEED-03.txt",
+  "demo_extraction": {
+    "scope_summary": "Migrate twelve on-premise statistical applications to AWS or Azure. Implement backup, monitoring, identity management and disaster recovery. Transfer knowledge to in-house staff and support operations for one year.",
+    "estimated_value_pkr": 25000000,
+    "bid_security": "2% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "The bidder must be registered with SECP as a private or public limited company.",
+        "type": "registration",
+        "threshold": "SECP",
+        "mandatory": true,
+        "source_quote": "The bidder must be registered with SECP as a private or public limited company."
+      },
+      {
+        "requirement": "Minimum average annual turnover of PKR 40 million over the last three years.",
+        "type": "turnover",
+        "threshold": "PKR 40 million",
+        "mandatory": true,
+        "source_quote": "Minimum average annual turnover of PKR 40 million over the last three years."
+      },
+      {
+        "requirement": "The firm must have a minimum of 5 years in business.",
+        "type": "experience",
+        "threshold": "5 years",
+        "mandatory": true,
+        "source_quote": "The firm must have a minimum of 5 years in business."
+      },
+      {
+        "requirement": "One completed cloud migration project",
+        "type": "experience",
+        "threshold": "1 cloud migration project",
+        "mandatory": true,
+        "source_quote": "The bidder must have completed at least one cloud migration project on AWS or Azure."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}

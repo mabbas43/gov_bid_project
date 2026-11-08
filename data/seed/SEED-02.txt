@@ -1,0 +1,46 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+Islamabad Capital Services Cell
+Islamabad, Pakistan
+
+BIDDING DOCUMENT
+AI Chatbot for Citizen Helpline Services
+Tender Reference No: SEED-02
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+Islamabad Capital Services Cell invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 12,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Deliver an Urdu and English AI chatbot for the citizen helpline on web and WhatsApp.
+2. Integrate the chatbot with the existing complaint database through REST APIs.
+3. Provide an administrator dashboard, staff training and six months of support.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 The firm must hold valid registration with the Pakistan Software Export Board (PSEB).
+3.3 Minimum annual turnover of PKR 20 million in the last financial year.
+3.4 The bidder must have at least 4 years of business history.
+3.5 The bidder must demonstrate at least one completed AI chatbot or conversational assistant project.
+3.6 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.7 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of PKR 240,000 shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

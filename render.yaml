@@ -1,0 +1,23 @@
+# Render blueprint for the backend. The frontend goes on Vercel (see docs/DEPLOY.md).
+services:
+  - type: web
+    name: tenderscout-backend
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: .
+    plan: starter            # persistent disks need a paid plan
+    numInstances: 1          # SQLite and in-process runs: do not scale past one
+    healthCheckPath: /health
+    disk:
+      name: tenderscout-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_MODEL
+        value: deepseek-chat
+      - key: DEMO_MODE
+        value: "true"
+      - key: CORS_ORIGINS
+        sync: false

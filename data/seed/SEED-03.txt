@@ -1,0 +1,46 @@
+SAMPLE DOCUMENT FOR DEMONSTRATION. NOT A REAL TENDER.
+
+National Bureau of Survey Data
+Islamabad, Pakistan
+
+BIDDING DOCUMENT
+Migration of Statistical Data Systems to Cloud Infrastructure
+Tender Reference No: SEED-03
+
+Procurement method: Single Stage, Two Envelope, under the Public Procurement Rules 2004.
+Bids shall be submitted through the e-Pak Acquisition and Disposal System (e-PADS).
+
+Date of publication: {{PUBLISHED_DATE}}
+Closing date and time: {{CLOSING_DATE}} at 11:00 AM
+Bids will be opened 30 minutes after the closing time.
+
+SECTION 1. INVITATION FOR BIDS
+National Bureau of Survey Data invites sealed bids from eligible firms for the assignment described below.
+The estimated cost of the assignment is PKR 25,000,000.
+
+SECTION 2. SCOPE OF WORK
+1. Migrate twelve on-premise statistical applications to AWS or Azure.
+2. Implement backup, monitoring, identity management and disaster recovery.
+3. Transfer knowledge to in-house staff and support operations for one year.
+
+SECTION 3. ELIGIBILITY CRITERIA
+3.1 The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL).
+3.2 The bidder must be registered with SECP as a private or public limited company.
+3.3 Minimum average annual turnover of PKR 40 million over the last three years.
+3.4 The firm must have a minimum of 5 years in business.
+3.5 The bidder must have completed at least one cloud migration project on AWS or Azure.
+3.6 Affidavit on stamp paper that the bidder has not been blacklisted by any government body.
+3.7 Bid security in the form of a pay order or bank guarantee shall accompany the financial bid.
+
+SECTION 4. BID SECURITY
+Bid security of 2% of bid value shall be furnished. Bids without bid security shall be rejected.
+Bid validity shall be 120 days from the date of opening.
+
+SECTION 5. EVALUATION
+The technical proposal carries 70 marks and the minimum qualifying score is 65%.
+Financial proposals of technically responsive bidders only will be opened.
+Award shall be made to the most advantageous bid under Rule 38 of the Public Procurement Rules 2004.
+
+SECTION 6. CONTRACT TERMS
+Performance guarantee: 10% of contract value. Payment is milestone based.
+Applicable taxes shall be deducted at source as per rules.

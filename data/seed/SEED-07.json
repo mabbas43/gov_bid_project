@@ -1,0 +1,65 @@
+{
+  "external_id": "SEED-07",
+  "title": "Digitization of Land Revenue Records",
+  "agency": "Punjab Land Records Cell",
+  "city": "Lahore",
+  "published_days_ago": 2,
+  "closing_in_days": 25,
+  "document": "SEED-07.txt",
+  "demo_extraction": {
+    "scope_summary": "Scan and index 400,000 land revenue records with data entry and quality control. Build a records search web application for revenue offices. Run the scanning operation on site at two district record rooms.",
+    "estimated_value_pkr": 32000000,
+    "bid_security": "2% of bid value",
+    "eligibility": [
+      {
+        "requirement": "Valid NTN and active ATL status",
+        "type": "registration",
+        "threshold": "NTN, ATL active",
+        "mandatory": true,
+        "source_quote": "The bidder must hold a valid National Tax Number (NTN) and appear on the FBR Active Taxpayers List (ATL)."
+      },
+      {
+        "requirement": "Minimum annual turnover of PKR 30 million during the last financial year.",
+        "type": "turnover",
+        "threshold": "PKR 30 million",
+        "mandatory": true,
+        "source_quote": "Minimum annual turnover of PKR 30 million during the last financial year."
+      },
+      {
+        "requirement": "Punjab office, or undertaking to open one",
+        "type": "location",
+        "threshold": "Punjab office or undertaking",
+        "mandatory": true,
+        "source_quote": "The bidder must have an office in Punjab, or submit an undertaking to establish one within 30 days of contract award."
+      },
+      {
+        "requirement": "Preferred: one million records digitized",
+        "type": "experience",
+        "threshold": "1 million records digitized",
+        "mandatory": false,
+        "source_quote": "The bidder should have digitized at least one million physical records in past assignments."
+      },
+      {
+        "requirement": "Preferred: land revenue system experience",
+        "type": "experience",
+        "threshold": "land revenue systems",
+        "mandatory": false,
+        "source_quote": "Experience with land revenue systems will be an added advantage."
+      },
+      {
+        "requirement": "Non-blacklisting affidavit",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Affidavit on stamp paper that the bidder has not been blacklisted by any government body."
+      },
+      {
+        "requirement": "Bid security instrument",
+        "type": "document",
+        "threshold": null,
+        "mandatory": true,
+        "source_quote": "Bid security in the form of a pay order or bank guarantee shall accompany the financial bid."
+      }
+    ]
+  }
+}
